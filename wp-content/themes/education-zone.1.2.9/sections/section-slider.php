@@ -21,7 +21,7 @@ if( $banner_post ){
 
                             <span><?php the_title(); ?></span>
                             <?php if( $read_more ): ?>
-                            <a href="<?php the_permalink(); ?>" class="course-link"><?php echo esc_html( $read_more ); ?></a>
+                            <a href="" class="course-link"><?php echo esc_html( $read_more ); ?></a>
                             <?php endif; ?>
                         </div>
                     </div>

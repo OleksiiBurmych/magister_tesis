@@ -22,7 +22,7 @@
 
 <body <?php body_class(); ?> itemscope itemtype="https://schema.org/WebPage">
 <?php wp_body_open(); ?>
-    <div style = "width: 1000px"id="page" class="site">
+    <div id="page" class="site">
         <a class="skip-link screen-reader-text" href="#acc-content"><?php esc_html_e( 'Skip to content (Press Enter)', 'education-zone' ); ?></a>
     <?php education_zone_site_header(); ?>
     <?php education_zone_mobile_header(); ?>
