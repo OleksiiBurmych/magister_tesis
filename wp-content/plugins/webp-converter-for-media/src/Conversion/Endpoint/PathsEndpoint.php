@@ -2,6 +2,8 @@
 
 namespace WebpConverter\Conversion\Endpoint;
 
+use WebpConverter\Conversion\Method\RemoteMethod;
+use WebpConverter\Settings\Option\ConversionMethodOption;
 use WebpConverter\Settings\Option\SupportedDirectoriesOption;
 
 /**
@@ -9,7 +11,8 @@ use WebpConverter\Settings\Option\SupportedDirectoriesOption;
  */
 class PathsEndpoint extends EndpointAbstract {
 
-	const PATHS_PER_REQUEST_LOCAL = 10;
+	const PATHS_PER_REQUEST_LOCAL  = 10;
+	const PATHS_PER_REQUEST_REMOTE = 1;
 
 	/**
 	 * {@inheritdoc}
@@ -28,7 +31,7 @@ class PathsEndpoint extends EndpointAbstract {
 				'required'          => false,
 				'default'           => false,
 				'sanitize_callback' => function ( $value ) {
-					return ( $value === '1' );
+					return ( (string) $value === '1' );
 				},
 			],
 		];
@@ -40,10 +43,13 @@ class PathsEndpoint extends EndpointAbstract {
 	public function get_route_response( \WP_REST_Request $request ) {
 		$params         = $request->get_params();
 		$skip_converted = ( $params['regenerate_force'] !== true );
+		$settings       = $this->plugin_data->get_plugin_settings();
 
 		$data = $this->get_paths(
 			$skip_converted,
-			self::PATHS_PER_REQUEST_LOCAL
+			( $settings[ ConversionMethodOption::OPTION_NAME ] !== RemoteMethod::METHOD_NAME )
+				? self::PATHS_PER_REQUEST_LOCAL
+				: self::PATHS_PER_REQUEST_REMOTE
 		);
 
 		return new \WP_REST_Response(

@@ -56,8 +56,10 @@ class RewritesErrorsDetector implements ErrorDetector {
 	 * {@inheritdoc}
 	 */
 	public function get_error() {
-		$settings = $this->plugin_data->get_plugin_settings();
-		if ( ! $settings[ SupportedDirectoriesOption::OPTION_NAME ] || ! $settings[ OutputFormatsOption::OPTION_NAME ] ) {
+		$plugin_settings = $this->plugin_data->get_plugin_settings();
+		if ( ! $plugin_settings[ SupportedDirectoriesOption::OPTION_NAME ]
+			|| ! $plugin_settings[ OutputFormatsOption::OPTION_NAME ]
+			|| ! in_array( WebpFormat::FORMAT_EXTENSION, $plugin_settings[ OutputFormatsOption::OPTION_NAME ] ) ) {
 			return null;
 		}
 

@@ -1032,7 +1032,7 @@ img {
 
 body.custom-background .site {
     background: #fff;
-    margin: 20px 200px 50px 200px;
+    margin: 20px;
 }
 
 
@@ -1461,7 +1461,7 @@ body.custom-background .site {
 }
 
 .featured-courses ul {
-    margin: 0 -6px 0px 250px;
+    /*margin: 0 -6px 0px 250px;*/
     padding: 0;
 }
 
@@ -1470,6 +1470,7 @@ body.custom-background .site {
     list-style: none;
     float: left;
     padding: 0 6px;
+    margin: 0 0 15px;
 }
 
 .featured-courses .header-part {
@@ -1489,11 +1490,14 @@ body.custom-background .site {
 .featured-courses ul li .image-holder .text {
     position: absolute;
     top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     text-align: center;
-    padding: 47% 28% 0;
+    padding: 0 12% 0;
     font-size: 19px;
     color: #f8fcff;
     text-transform: uppercase;

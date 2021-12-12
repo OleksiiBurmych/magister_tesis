@@ -21,6 +21,10 @@ As of today, over 90% of users use browsers that support the WebP format. The lo
 
 This will be a profit both for your users who will not have to download so much data, but also for a server that will be less loaded. Remember that a better optimized website also affects your Google ranking.
 
+#### AVIF support
+
+Now you can use AVIF as the output format for your images. The AVIF format is a new extension - is the successor to WebP. It allows you to achieve even higher levels of image compression, and the quality of the converted images is better than in WebP.
+
 #### How does this work?
 
 - If you have just installed the plugin, you can optimize images with one click.
@@ -104,7 +108,7 @@ If you get an error: `File "%s" is unreadable. Please check file permissions.` m
 
 If you get an error: `"%s" is not a valid image file.` means that the file is damaged in some way. Download the file to disk, save it again using any graphics program and add again to the page. If the error applies to individual images then you can ignore it - just the original images will load, not WebP.
 
-If you get an error: `"%s" converted to WebP is larger than original and has been deleted.` means the original image weighed less than WebP. This happens when images have been compressed before. Disable the *"Automatic removal of WebP files larger than original"* option in plugin settings to force always using WebP.
+If you get an error: `"%s" converted to .webp is larger than original and has been deleted.` means the original image weighed less than WebP. This happens when images have been compressed before. Disable the *"Automatic removal of files in output formats larger than original"* option in plugin settings to force always using WebP.
 
 In the case of the above problems, **contacting the support forum will be useless**. Unfortunately, we are unable to help you if your files are damaged. You have to fix it yourself. If you have previously used other tools that changed the original files and damaged them, you will do nothing more.
 
@@ -153,7 +157,7 @@ If the converted image in WebP format is larger than the original, the browser w
 
 When such a situation occurs, a file in `.webp.deleted` format will be created. This avoids re-converting images that were larger than original after converting to WebP. If the option of forced conversion of all images is checked, this image will also be re-converted.
 
-If you want to force the use of WebP files, uncheck the `Automatic removal of WebP files larger than original` option in the plugin settings. Then click on the `Regenerate All` button to convert all images again.
+If you want to force the use of WebP files, uncheck the `Automatic removal of files in output formats larger than original` option in the plugin settings. Then click on the `Regenerate All` button to convert all images again.
 
 Remember that this plugin supports images from the `/wp-content` directory, e.g. files downloaded from the Media Library. Redirections will not work if your images are downloaded from another domain, i.e. from an external service.
 
@@ -372,6 +376,7 @@ and add this code line:
 `types {`
 `	# ...`
 `	image/webp webp;`
+`	image/avif avif;`
 `}`
 
 Then find the configuration file in one of the paths *(remember to select configuration file used by your vhost)*:
@@ -381,6 +386,16 @@ Then find the configuration file in one of the paths *(remember to select config
 and add below code in this file *(add these lines to very beginning of file if possible - if they will be at the bottom, other rules may block the rules for WebP from working)*:
 
 `server {`
+`	location ~ /wp-content/(?<path>.+)\.(?<ext>jpe?g|png|gif)$ {`
+`		if ($http_accept !~* "image/avif") {`
+`			break;`
+`		}`
+`		add_header Vary Accept;`
+`		add_header Cache-Control "private" always;`
+`		expires 365d;`
+`		try_files /wp-content/uploads-webpc/$path.$ext.avif /wp-content/uploads-webpc/$path.$ext.webp $uri =404;`
+`	}`
+`   `
 `	location ~ /wp-content/(?<path>.+)\.(?<ext>jpe?g|png|gif)$ {`
 `		if ($http_accept !~* "image/webp") {`
 `			break;`
@@ -405,6 +420,18 @@ Please manually paste the following code **at the beginning of .htaccess file** 
 `# ! --- DO NOT EDIT PREVIOUS LINE --- !`
 `<IfModule mod_rewrite.c>
 	RewriteEngine On
+	RewriteCond %{HTTP_ACCEPT} image/avif
+	RewriteCond %{DOCUMENT_ROOT}/wp-content/uploads-webpc/$1.jpg.avif -f
+	RewriteRule (.+)\.jpg$ /wp-content/uploads-webpc/$1.jpg.avif [NC,T=image/avif,L]
+	RewriteCond %{HTTP_ACCEPT} image/avif
+	RewriteCond %{DOCUMENT_ROOT}/wp-content/uploads-webpc/$1.jpeg.avif -f
+	RewriteRule (.+)\.jpeg$ /wp-content/uploads-webpc/$1.jpeg.avif [NC,T=image/avif,L]
+	RewriteCond %{HTTP_ACCEPT} image/avif
+	RewriteCond %{DOCUMENT_ROOT}/wp-content/uploads-webpc/$1.png.avif -f
+	RewriteRule (.+)\.png$ /wp-content/uploads-webpc/$1.png.avif [NC,T=image/avif,L]
+</IfModule>
+<IfModule mod_rewrite.c>
+	RewriteEngine On
 	RewriteCond %{HTTP_ACCEPT} image/webp
 	RewriteCond %{DOCUMENT_ROOT}/wp-content/uploads-webpc/$1.jpg.webp -f
 	RewriteRule (.+)\.jpg$ /wp-content/uploads-webpc/$1.jpg.webp [NC,T=image/webp,L]
@@ -427,10 +454,12 @@ And the following code **at the beginning of .htaccess file** in the `/wp-conten
 `# ! --- DO NOT EDIT PREVIOUS LINE --- !`
 `<IfModule mod_mime.c>
 	AddType image/webp .webp
+	AddType image/avif .avif
 </IfModule>
 <IfModule mod_expires.c>
 	ExpiresActive On
 	ExpiresByType image/webp "access plus 1 year"
+	ExpiresByType image/avif "access plus 1 year"
 </IfModule>
 <IfModule mod_headers.c>
   Header Set Cache-Control "private"
@@ -440,9 +469,9 @@ And the following code **at the beginning of .htaccess file** in the `/wp-conten
 
 = Is the plugin completely free? =
 
-Yes. The plugin is completely free.
+The plugin is free and you can use it without restrictions. We also offer a paid version that allows for additional functionalities
 
-However, working on plugins and technical support requires many hours of work. If you want to appreciate it, you can [provide us a coffee](https://ko-fi.com/gbiorczyk/?utm_source=webp-converter-for-media&utm_medium=readme-faq). Thanks everyone!
+However, working on plugins and technical support requires many hours of work. If you are using the free version of the plugin and if you want to appreciate us, you can [provide us a coffee](https://ko-fi.com/gbiorczyk/?utm_source=webp-converter-for-media&utm_medium=readme-faq). Thanks everyone!
 
 Thank you for all the ratings and reviews.
 
@@ -458,27 +487,10 @@ This is all very important to us and allows us to do even better things for you!
 
 == Changelog ==
 
-= 3.2.4 (2021-11-21) =
-* `[Fixed]` Automatic image conversion when /uploads directory is not organized into monthly and yearly folders
-* `[Fixed]` Displaying errors when converting images
-
-= 3.2.3 (2021-10-15) =
-* `[Added]` Exclusion of re-converting images that caused regeneration error
-
-= 3.2.2 (2021-09-26) =
-* `[Changed]` Option "Force redirections to WebP for all domains" as default
-* `[Added]` Debug information for regeneration error
-
-= 3.2.1 (2021-09-12) =
-* `[Fixed]` Skipping converted images when converting all images
-
-= 3.2.0 (2021-09-12) =
-* `[Removed]` Filter `webpc_files_paths`
-* `[Removed]` Filter `webpc_dir_excluded`
-* `[Changed]` Error handling when converting images
-* `[Added]` Filter `webpc_supported_source_file` to exclude paths to files from converting
-* `[Added]` Filter `webpc_supported_source_directory` to exclude paths to directories from converting
-* `[Added]` Modifications to appearance of plugin settings page
+= 4.0.0 (2021-12-04) =
+* `[Added]` Converting images using remote server
+* `[Added]` Converting images to AVIF format
+* `[Added]` Error detection for invalid permalinks structure
 
 See [changelog.txt](https://plugins.svn.wordpress.org/webp-converter-for-media/trunk/changelog.txt) for previous versions.
 

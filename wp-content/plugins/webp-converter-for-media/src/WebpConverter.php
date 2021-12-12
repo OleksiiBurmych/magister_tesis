@@ -27,11 +27,11 @@ class WebpConverter {
 		( new Action\RegenerateAll( $plugin_data ) )->init_hooks();
 		( new Conversion\Directory\DirectoryFactory() )->init_hooks();
 		( new Conversion\DirectoryFiles( $plugin_data ) )->init_hooks();
+		( new Endpoint\EndpointIntegration( new Endpoint\ImagesCounterEndpoint( $plugin_data ) ) )->init_hooks();
 		( new Endpoint\EndpointIntegration( new Endpoint\PathsEndpoint( $plugin_data ) ) )->init_hooks();
 		( new Endpoint\EndpointIntegration( new Endpoint\RegenerateEndpoint( $plugin_data ) ) )->init_hooks();
 		( new Conversion\SkipConvertedPaths( $plugin_data ) )->init_hooks();
 		( new Conversion\SkipExcludedPaths() )->init_hooks();
-		( new Conversion\SkipLarger( $plugin_data ) )->init_hooks();
 		( new Cron\Event( $plugin_data ) )->init_hooks();
 		( new Cron\Schedules() )->init_hooks();
 		( new ErrorDetectorAggregator( $plugin_info, $plugin_data ) )->init_hooks();

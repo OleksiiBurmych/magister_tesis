@@ -751,3 +751,45 @@ select > option[value=""] {
     margin-top: 12px;
     padding-bottom: 0;
 }
+/* Gutenberg selector field style */
+.block-editor-inserter__preview-container .sptf_block_shortcode{
+    display: none;
+  }
+  .block-editor-inserter__preview-container .sptf_shortcode_block_preview_image img{
+    width: 100%;
+  }
+
+  .block-editor-page .sptp-member-social ul li a{
+      color: #fff !important;
+  }
+  
+  .sptf_block_shortcode {
+    padding: 50px 15px 55px 15px;
+    border: 1px solid #cccccc;
+  }
+  .sptf_block_shortcode .sptf_block_shortcode_text{
+    margin-bottom: 5px;
+    font-size: 13px;
+  }
+  .sptf_block_shortcode_title {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .sptf_block_shortcode .sptf_block_shortcode_title img{
+    width: 26px;
+    margin-right: 10px;
+    box-shadow: none;
+  }
+  .sptf_block_shortcode .sptf_block_shortcode_title h4{
+    margin: 0;
+  }
+  
+  .block-editor-page .editor-styles-wrapper select,
+  .block-editor-page select.sptf-shortcode-selector,
+  .block-editor-page select.sptf-shortcode-selector:focus,
+  .block-editor-page select.sptf-shortcode-selector:focus-visible {
+    width: auto;
+    padding: 5px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+  }

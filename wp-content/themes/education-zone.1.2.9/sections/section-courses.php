@@ -49,7 +49,7 @@ $qry = new WP_Query( $args );
         				<div class="description">
         					<h2><?php the_title(); ?></h2>
         					<?php the_excerpt();?>
-        					<a href="<?php the_permalink(); ?>" class="learn-more"><?php echo esc_html__( 'Learn More', 'education-zone' ); ?></a>
+        					<a href="<?php the_permalink(); ?>" class="learn-more">Дізнатися детальніше</a>
         				</div>
         			</div>
 
@@ -57,6 +57,106 @@ $qry = new WP_Query( $args );
 		<?php } 
             wp_reset_postdata();
         ?>
+            <li>
+
+                <div class="image-holder" tabindex="0">
+                    <?php
+                    if(has_post_thumbnail()){
+                        the_post_thumbnail( 'education-zone-featured-course' );
+                    }else{
+                        education_zone_get_fallback_svg( 'education-zone-featured-course' );
+                    } ?>
+                    <div class="text">
+                        <span>014 – СО (РУМ. МОВА ТА Л-РА).</span>
+                    </div>
+                    <div class="description">
+                        <h2>014 – СО (РУМ. МОВА ТА Л-РА).</h2>
+                        <p>Середня освіта – (Румунська мова та література)</p>
+                        <a href="<?php the_permalink(); ?>" class="learn-more">Дізнатися детальніше</a>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+
+                <div class="image-holder" tabindex="0">
+                    <?php
+                    if(has_post_thumbnail()){
+                        the_post_thumbnail( 'education-zone-featured-course' );
+                    }else{
+                        education_zone_get_fallback_svg( 'education-zone-featured-course' );
+                    } ?>
+                    <div class="text">
+                        <span>014 – СО (РУМ. МОВА ТА Л-РА)</span>
+                    </div>
+                    <div class="description">
+                        <h2>014 – СО (РУМ. МОВА ТА Л-РА).</h2>
+                        <p>Середня освіта – (Румунська мова та література)</p>
+                        <a href="<?php the_permalink(); ?>" class="learn-more">Дізнатися детальніше</a>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+
+                <div class="image-holder" tabindex="0">
+                    <?php
+                    if(has_post_thumbnail()){
+                        the_post_thumbnail( 'education-zone-featured-course' );
+                    }else{
+                        education_zone_get_fallback_svg( 'education-zone-featured-course' );
+                    } ?>
+                    <div class="text">
+                        <span>014 – СО (РУМ. МОВА ТА Л-РА).</span>
+                    </div>
+                    <div class="description">
+                        <h2>014 – СО (РУМ. МОВА ТА Л-РА).</h2>
+                        <p>Середня освіта – (Румунська мова та література)</p>
+                        <a href="<?php the_permalink(); ?>" class="learn-more">Дізнатися детальніше</a>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+
+                <div class="image-holder" tabindex="0">
+                    <?php
+                    if(has_post_thumbnail()){
+                        the_post_thumbnail( 'education-zone-featured-course' );
+                    }else{
+                        education_zone_get_fallback_svg( 'education-zone-featured-course' );
+                    } ?>
+                    <div class="text">
+                        <span>014 – СО (РУМ. МОВА ТА Л-РА).</span>
+                    </div>
+                    <div class="description">
+                        <h2>014 – СО (РУМ. МОВА ТА Л-РА).</h2>
+                        <p>Середня освіта – (Румунська мова та література)</p>
+                        <a href="<?php the_permalink(); ?>" class="learn-more">Дізнатися детальніше</a>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+
+                <div class="image-holder" tabindex="0">
+                    <?php
+                    if(has_post_thumbnail()){
+                        the_post_thumbnail( 'education-zone-featured-course' );
+                    }else{
+                        education_zone_get_fallback_svg( 'education-zone-featured-course' );
+                    } ?>
+                    <div class="text">
+                        <span>014 – СО (РУМ. МОВА ТА Л-РА).</span>
+                    </div>
+                    <div class="description">
+                        <h2>014 – СО (РУМ. МОВА ТА Л-РА).</h2>
+                        <p>Середня освіта – (Румунська мова та література)</p>
+                        <a href="<?php the_permalink(); ?>" class="learn-more">Дізнатися детальніше</a>
+                    </div>
+                </div>
+
+            </li>
         </ul>
     <?php } ?>
 </div>

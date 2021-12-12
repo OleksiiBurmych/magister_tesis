@@ -27,7 +27,7 @@ class LibsWithoutWebpSupportNotice implements ErrorNotice {
 				'<a href="https://wordpress.org/plugins/webp-converter-for-media/#faq" target="_blank">',
 				'</a>'
 			),
-			__( 'Select a different method in the "Conversion method" option if available, or reconfigure the server so that the selected conversion method supports the WebP format. Please contact your server administrator in this case.', 'webp-converter-for-media' ),
+			__( 'You can also use "Remote server" option in "Conversion method" field in the plugin settings. This option allows you to convert your images using a remote server, so your server does not have to meet all technical requirements for libraries.', 'webp-converter-for-media' ),
 		];
 	}
 }

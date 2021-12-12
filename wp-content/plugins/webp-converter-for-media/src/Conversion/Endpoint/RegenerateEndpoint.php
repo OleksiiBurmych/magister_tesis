@@ -21,7 +21,15 @@ class RegenerateEndpoint extends EndpointAbstract {
 	 */
 	public function get_route_args(): array {
 		return [
-			'paths' => [
+			'regenerate_force' => [
+				'description'       => 'Option to force all images to be converted again (set `1` to enable)',
+				'required'          => false,
+				'default'           => false,
+				'sanitize_callback' => function ( $value ) {
+					return ( (string) $value === '1' );
+				},
+			],
+			'paths'            => [
 				'description'       => 'Array of file paths (server paths)',
 				'required'          => true,
 				'default'           => [],
@@ -37,7 +45,7 @@ class RegenerateEndpoint extends EndpointAbstract {
 	 */
 	public function get_route_response( \WP_REST_Request $request ) {
 		$params = $request->get_params();
-		$data   = $this->convert_images( $params['paths'] );
+		$data   = $this->convert_images( $params['paths'], $params['regenerate_force'] );
 
 		if ( $data !== false ) {
 			return new \WP_REST_Response(
@@ -58,12 +66,13 @@ class RegenerateEndpoint extends EndpointAbstract {
 	/**
 	 * Initializes image conversion to output formats.
 	 *
-	 * @param string[] $paths Server paths of source images.
+	 * @param string[] $paths            Server paths of source images.
+	 * @param bool     $regenerate_force .
 	 *
 	 * @return array[]|false Status of conversion.
 	 */
-	public function convert_images( array $paths ) {
-		$response = ( new MethodIntegrator( $this->plugin_data ) )->init_conversion( $paths );
+	public function convert_images( array $paths, bool $regenerate_force ) {
+		$response = ( new MethodIntegrator( $this->plugin_data ) )->init_conversion( $paths, $regenerate_force );
 		if ( $response === null ) {
 			return false;
 		}

@@ -143,7 +143,7 @@ class Team_Premium {
 				<div class="video-area text-center">
 					<img src="<?php echo esc_url( SPT_PLUGIN_ROOT . 'src/Admin/img/premium/wp-team-vector.svg' ); ?>" alt="">
 					<div class="video-button">
-						<a class="js-video-button" href="#" data-channel="youtube" data-video-url="//www.youtube.com/embed/bdSNx3n5suA">
+						<a class="js-video-button" href="#" data-channel="youtube" data-video-url="//www.youtube.com/embed/83dNkEYjqgI">
 							<span><i class="fa fa-play"></i></span>
 						</a>
 					</div>

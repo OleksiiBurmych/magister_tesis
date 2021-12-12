@@ -58,7 +58,7 @@ class Help_Page {
 				</div>
 			</div>
 			<div class="video-area">
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/ix7iyS0Fms4" frameborder="0" allowfullscreen=""></iframe>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLoUb-7uG-5jPvyBSiv3x5HNvGQ3hx08RU" frameborder="0" allowfullscreen=""></iframe>
 			</div>
 			<div class="content-area">
 				<div class="container">

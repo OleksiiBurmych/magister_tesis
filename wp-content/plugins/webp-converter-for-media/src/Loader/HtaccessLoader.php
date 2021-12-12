@@ -200,7 +200,9 @@ class HtaccessLoader extends LoaderAbstract {
 
 		$content .= '<IfModule mod_expires.c>' . PHP_EOL;
 		$content .= '  ExpiresActive On' . PHP_EOL;
-		$content .= '  ExpiresByType image/webp "access plus 1 year"' . PHP_EOL;
+		foreach ( $this->get_mime_types() as $format => $mime_type ) {
+			$content .= "  ExpiresByType ${mime_type} \"access plus 1 year\"" . PHP_EOL;
+		}
 		$content .= '</IfModule>';
 
 		return apply_filters( 'webpc_htaccess_mod_expires', $content );

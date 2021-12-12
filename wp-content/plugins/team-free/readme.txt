@@ -3,8 +3,8 @@ Contributors: shapedplugin, shamimmiashuhagh, rubel_miah, khalilu
 Donate link: https://shapedplugin.com/donate
 Tags: team, wp team, team members, team showcase, team members showcase, our team members, our team, best team member plugin, wordpress team showcase plugin, meet the team, our stuff, responsive team plugin,  wordpress team, team carousel, team slider,  team grid, team list, team mosaic, team inline, team member filter, staff, workers, team profile, staff showcase, crew, squad, employees, modal, hexagonal grid, thumbnail pager, gallery, team gallery, people, company, organization
 Requires at least: 4.3
-Tested up to: 5.8.1
-Stable tag: 2.1.8
+Tested up to: 5.8.2
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ The most versatile WordPress Team plugin to display unlimited teams in Carousel,
 
 == Description ==
 
-[youtube https://www.youtube.com/watch?v=ix7iyS0Fms4]
+[youtube https://www.youtube.com/embed/videoseries?list=PLoUb-7uG-5jPvyBSiv3x5HNvGQ3hx08RU]
 
 [__Live Demo__](https://demo.shapedplugin.com/wp-team/) | [__Documentation__](https://docs.shapedplugin.com/docs/wp-team/introduction/) | [__Support__](https://shapedplugin.com/support/?user=lite) | [__Upgrade to Pro!__](https://shapedplugin.com/plugin/wp-team-pro/?ref=1)
 
@@ -277,6 +277,12 @@ The WordPress codex contains <a href="https://codex.wordpress.org/Managing_Plugi
 
 
 == Changelog ==
+
+= 2.2.1 - Dec 09, 2021 =
+* Fix: Error without team shortcode in Gutenberg block.
+
+= 2.2.0 - Dec 08, 2021 =
+* New: Gutenberg block.
 
 = 2.1.8 - Nov 04, 2021 =
 * Improved: Settings page "Save Changes" and "Reset Tab" button.

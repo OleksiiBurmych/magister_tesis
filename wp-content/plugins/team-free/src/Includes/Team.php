@@ -21,6 +21,7 @@ use ShapedPlugin\WPTeam\Frontend\Frontend;
 use ShapedPlugin\WPTeam\Includes\Loader;
 use ShapedPlugin\WPTeam\Includes\WP_Team_i18n;
 use ShapedPlugin\WPTeam\Admin\Team_Import_Export;
+use ShapedPlugin\WPTeam\Admin\WP_Team_Gutenberg_Block;
 use ShapedPlugin\WPTeam\Includes\Help_Page;
 use ShapedPlugin\WPTeam\Admin\Helper\Team_Premium;
 use ShapedPlugin\WPTeam\Admin\Helper\Review_Notice;
@@ -175,6 +176,9 @@ class Team {
 		// Review notice for the plugin.
 		$this->loader->add_action( 'admin_notices', $review_notice, 'display_admin_notice' );
 		$this->loader->add_action( 'wp_ajax_sp-wpt-never-show-review-notice', $review_notice, 'dismiss_review_notice' );
+
+		// Gutenberg block.
+		new WP_Team_Gutenberg_Block();
 	}
 
 	/**
